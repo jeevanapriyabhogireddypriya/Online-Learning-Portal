@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Learning Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🎓 AI Learning Portal</h1>
+
+<div class="user-info">
+  <span id="userDisplay"></span>
+  <button onclick="logout()" class="logout-btn">Logout</button>
+</div>
+
+<div class="card">
+
+  <h2>Select Course</h2>
+
+<select id="courseSelect">
+    <option value="">-- Select Course --</option>
+    <option value="Python">Python</option>
+    <option value="Java">Java</option>
+    <option value="C Programming">C Programming</option>
+    <option value="Web Development">Web Development</option>
+    <option value="Data Science">Data Science</option>
+    <option value="Cloud Computing">Cloud Computing</option>
+    <option value="AI Basics">AI Basics</option>
+    <option value="Machine Learning">Machine Learning</option>
+    <option value="Cyber Security">Cyber Security</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="loadCourse()">Load Material</button>
+
+</div>
+
+<div class="card">
+
+  <h2>📘 Learning Materials</h2>
+
+  <div id="materials"></div>
+
+</div>
+
+<div class="card">
+
+  <h2>📝 Assignment</h2>
+
+<select id="quizCourse">
+    <option value="">-- Select Course for Quiz --</option>
+    <option value="Python">Python</option>
+    <option value="Java">Java</option>
+    <option value="C Programming">C Programming</option>
+    <option value="Web Development">Web Development</option>
+    <option value="Data Science">Data Science</option>
+    <option value="Cloud Computing">Cloud Computing</option>
+    <option value="AI Basics">AI Basics</option>
+    <option value="Machine Learning">Machine Learning</option>
+    <option value="Cyber Security">Cyber Security</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="startQuiz()">Start Quiz</button>
+  
+  <button onclick="openQuizInNewPage()">Open Quiz in New Page</button>
+
+  <div id="quizContainer"></div>
+
+<div id="quizResult"></div>
+
+</div>
+
+<div class="card">
+
+  <h2>🤖 AI Chatbot</h2>
+
+  <div id="chatContainer" style="max-height: 300px; overflow-y: auto; background: #f9f9f9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <div id="chatMessages"></div>
+  </div>
+
+  <input type="text" id="chatInput" placeholder="Ask me anything..." style="width: 60%; padding: 10px;">
+  <button onclick="sendMessage()">Send</button>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Check if user is logged in when page loads
+  window.onload = function() {
+    if (!isLoggedIn()) {
+      window.location.href = "index.html";
+    } else {
+      // Display user info
+      const username = sessionStorage.getItem("username");
+      const role = sessionStorage.getItem("userRole");
+      document.getElementById("userDisplay").textContent = "Welcome, " + username + " (" + role + ")";
+    }
+  };
+  
+  function logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
